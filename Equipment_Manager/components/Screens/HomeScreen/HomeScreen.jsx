@@ -1,4 +1,6 @@
-import { Text, View } from "react-native";
+import { Text, View, ScrollView } from "react-native";
+import { SearchBar } from "../../SearchBar/SearchBar";
+import { EquipCard } from "../../EquipCard/EquipCard";
 import { s } from "./HomeScreen.style";
 
 
@@ -6,8 +8,19 @@ import { s } from "./HomeScreen.style";
 export function HomeScreen(){
     return (
         <View>
-            <Text style={s.style}>
-                Hello I'm the HomeScreen!
-            </Text>
+            <SearchBar/>
+            <ScrollView>
+                <EquipCard/>
+                <EquipCard/>
+                <EquipCard/>
+                <EquipCard/>
+                <EquipCard/>
+                <EquipCard/>
+                <EquipCard/>
+                <EquipCard/>
+                <EquipCard/>
+    
+            </ScrollView>
+            
         </View>
     )}

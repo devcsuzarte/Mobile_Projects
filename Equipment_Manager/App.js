@@ -4,7 +4,9 @@ import { s } from "./App.style"
 import { SearchBar } from './components/SearchBar/SearchBar';
 import { BottomBar } from './components/BottomBar/BottomBar';
 import { EquipCard } from './components/EquipCard/EquipCard';
+import { SelectScreen } from './components/SelectScreen/SelectScreen';
 import { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
 //const [selectScreen, setSelectScreen] = useState("home");
 
@@ -14,20 +16,9 @@ import { useState } from 'react';
 export default function App() {
   return (
 
-    <>
-      <SafeAreaProvider style={s.root}>
-      <SafeAreaView style={s.app}>
-        <Text style={s.header}>EQM - Bem vindo</Text>
-        <SearchBar style={s.searchBar}/>
-        <ScrollView style={s.content}>
-
-          
-        </ScrollView>
-        
-      </SafeAreaView>
-      </SafeAreaProvider>
-      <BottomBar style={s.bottomBar}/>
-    </>
+    <NavigationContainer>
+      <SelectScreen/>
+    </NavigationContainer>
    
     
     

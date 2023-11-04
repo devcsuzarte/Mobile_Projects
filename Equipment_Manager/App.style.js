@@ -19,11 +19,13 @@ export const s = StyleSheet.create({
 
   content: {
     flex: 7,
+    marginTop: 20,
   },
 
   bottomBar: {
       backgroundColor: "black",
       height: 95,
+
       
   }
 

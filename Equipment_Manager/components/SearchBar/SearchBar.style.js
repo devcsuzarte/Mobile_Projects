@@ -6,7 +6,7 @@ export const s = StyleSheet.create({
         marginTop: 35,
         backgroundColor: "white",  
         flexDirection: "row",
-        borderRadius: "20%",
+        borderRadius: 20,
         padding: 10,
         margin: 15,
         shadowColor: "#000",
@@ -31,7 +31,7 @@ export const s = StyleSheet.create({
 
         width: 50,
         height: 50,
-        borderRadius: "50%",
+        borderRadius: 50,
 
     }
 

@@ -1,9 +1,13 @@
 import { TextInput, View, Image, TouchableOpacity } from "react-native"
 import { s } from "./BottomBar.style"
 import { Ionicons } from '@expo/vector-icons'; 
+import { AddScreen } from "../Screens/AddScreen/AddScreen";
+import { HomeScreen } from "../Screens/HomeScreen/HomeScreen"
+import { useState } from "react";
 
 
 export function BottomBar(){
+    
     return (
 
         <View style={s.root}>

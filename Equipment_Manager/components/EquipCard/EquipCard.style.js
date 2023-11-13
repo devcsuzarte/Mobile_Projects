@@ -43,9 +43,7 @@ export const s = StyleSheet.create({
 
         marginLeft: 70,
         padding: 7,
-        borderRadius: Platform.OS == 'ios' ? "10" : 10,
         
-
         backgroundColor: "#33B2FF",
 
         shadowColor: "#000",

@@ -17,7 +17,7 @@ export default function App() {
   return (
 
     <NavigationContainer>
-      <SelectScreen/>
+      <SelectScreen style={s.container}/>
     </NavigationContainer>
    
     

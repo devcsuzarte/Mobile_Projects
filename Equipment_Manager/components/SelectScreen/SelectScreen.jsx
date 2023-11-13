@@ -25,7 +25,7 @@ export function SelectScreen(){
             )
         }}/>
         <Tab.Screen 
-        name="Add" 
+        name="Cadastrar Equipamento" 
         component={AddScreen}
         options={{
             tabBarLabel: 'Add',

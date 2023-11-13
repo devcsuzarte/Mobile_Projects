@@ -27,6 +27,7 @@ export const s = StyleSheet.create({
       height: 95,
 
       
-  }
+  },
+
 
 })

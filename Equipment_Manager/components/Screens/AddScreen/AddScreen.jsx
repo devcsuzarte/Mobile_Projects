@@ -1,7 +1,8 @@
-import { Button, ScrollView, Text, View , TouchableOpacity} from "react-native";
+import { Button, ScrollView, Text, View , TouchableOpacity, Alert} from "react-native";
 import RNPickerSelect from 'react-native-picker-select';
 import { s } from "./AddScreen.style";
 import { useState } from "react";
+import uuid  from 'react-native-uuid';
 
 
 export function AddScreen(){
@@ -15,22 +16,34 @@ const selectEquipment = {
         { label: 'Impressoras e Periféricos', value: 'printerAndPeripheral' },
        
     ],
+
+    origin: [
+
+        { label: 'Contabilidade', value: 'ctbl' },
+        { label: 'Financeiro', value: 'finance' },
+        { label: 'Recepção', value: 'rcp' },
+        { label: 'Suprimentos', value: 'suply'},
+        { label: 'Tecnologia da Informação', value: 'ti'},
+
+    ]
 };
-
-
 
 
 const equipInfo = {
-
-    type: 'none',
+    id: 'none',
     category: 'none',
+    type: 'none',
     origin: 'none',
-    status: 'none'
-
-    
+    status: 'none'    
 };
 
-const onDone = () => console.log(equipInfo);
+
+
+const onDone = () => {
+
+    equipInfo.id = uuid.v4();    
+    console.log(equipInfo);
+};
 
 
 const [selectOptions, setSelectOptions] = useState([]);
@@ -53,6 +66,7 @@ function getOptions(value){
                
             ]
             setSelectOptions(options);
+            equipInfo.category = value;
             console.log(options)
             break;
 
@@ -112,7 +126,7 @@ function getOptions(value){
                 <RNPickerSelect
                 style={s.select}
                 placeholder={{label: 'Selecione um tipo', value: null}}
-                items={selectEquipment.category}
+                items={selectEquipment.origin}
                 onValueChange={(value) => equipInfo.origin = value}
                 />
             </View>

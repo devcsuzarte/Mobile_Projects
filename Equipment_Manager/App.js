@@ -8,14 +8,12 @@ import { SelectScreen } from './components/SelectScreen/SelectScreen';
 import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-  
-
 //const [selectScreen, setSelectScreen] = useState("home");
 
 
+
+
 export default function App() {
-
-
   return (
 
     <NavigationContainer>

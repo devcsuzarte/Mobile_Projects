@@ -2,6 +2,7 @@ import { TextInput, View, Image, TouchableOpacity } from "react-native"
 import { Ionicons } from '@expo/vector-icons'; 
 import { AddScreen } from "../Screens/AddScreen/AddScreen";
 import { HomeScreen } from "../Screens/HomeScreen/HomeScreen"
+import { MaintenceCard } from "../Screens/MaintenceCard/MaintenceCard";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
@@ -35,7 +36,7 @@ export function SelectScreen(){
         }}/>
         <Tab.Screen 
         name="Manutenções" 
-        component={AddScreen}
+        component={MaintenceCard}
         options={{
             tabBarLabel: 'Maintance',
             tabBarIcon: ({color, size}) => (

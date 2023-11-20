@@ -1,63 +1,12 @@
 import { Button, ScrollView, Text, View , TouchableOpacity, Alert} from "react-native";
 import RNPickerSelect from 'react-native-picker-select';
 import { s } from "./AddScreen.style";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import uuid  from 'react-native-uuid';
-import * as SQLite from "expo-sqlite";
-
-const db = SQLite.openDatabase(
-    {
-        name: 'MainDB',
-        location: 'default',
-    },
-    () => {},
-    error => {console.log(error)}
-);
 
 
 export function AddScreen(){
 
-    const equipInfo = {
-        id: 'none',
-        category: 'none',
-        type: 'none',
-        origin: 'none',
-        status: 'none'    
-    };
-
-
-    useEffect(() => {
-        createTable();
-    }, []);
-
-const createTable = () => {
-    db.transaction((tx) => {
-        tx.executeSql(
-            "CREATE TABLE IF NOT EXISTS "
-            + "Equip"
-            + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, Category TEXT, Type TEXT);"
-        )
-    })
-}
-
-const setData = async () => {
-    if(equipInfo.category == null || equipInfo.type == null){
-        Alert.alert("Selecione uma opção válida");
-    } else {
-        try {
-            await db.transaction(async (tx) => {
-               await tx.executeSql(
-                "INSERT INTO Users (Name, Age) VALUES (?,?)",
-                [equipInfo.category, equipInfo.type]
-               ) 
-
-               console.log("Item adicionado");
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    } 
-}
 const selectEquipment = {
 
     category: [
@@ -76,7 +25,24 @@ const selectEquipment = {
         { label: 'Suprimentos', value: 'suply'},
         { label: 'Tecnologia da Informação', value: 'ti'},
 
+    ],
+
+    status: [
+
+        { label: 'Em produção', value: 'production' },
+        { label: 'Em Manutenção', value: 'maintence' },
+        { label: 'Em uso', value: 'use' },
+        { label: 'Em trânsito para reparo', value: 'transit' },
     ]
+};
+
+
+const equipInfo = {
+    id: 'none',
+    category: 'none',
+    type: 'none',
+    origin: 'none',
+    status: 'none'    
 };
 
 
@@ -85,7 +51,6 @@ const onDone = () => {
 
     equipInfo.id = uuid.v4();    
     console.log(equipInfo);
-    setData();
 };
 
 
@@ -181,7 +146,7 @@ function getOptions(value){
                 <RNPickerSelect
                 style={s.select}
                 placeholder={{label: 'Selecione um tipo', value: null}}
-                items={selectEquipment.category}
+                items={selectEquipment.status}
                 onValueChange={(value) => equipInfo.status = value}
                 />
             </View>

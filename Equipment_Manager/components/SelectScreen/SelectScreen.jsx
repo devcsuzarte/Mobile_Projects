@@ -35,10 +35,10 @@ export function SelectScreen(){
             )
         }}/>
         <Tab.Screen 
-        name="Manutenções" 
+        name="Ocorrências" 
         component={MaintenceCard}
         options={{
-            tabBarLabel: 'Maintance',
+            tabBarLabel: 'Ocorrências',
             tabBarIcon: ({color, size}) => (
                 <Ionicons name="build-outline" size={24} color="black"/>
             )

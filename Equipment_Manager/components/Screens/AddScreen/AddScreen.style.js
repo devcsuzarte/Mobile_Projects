@@ -22,15 +22,30 @@ export const s = StyleSheet.create({
 
         borderBottomColor: "black",
         borderBottomWidth: 0.5,
-        marginVertical: 25,
+        marginTop: 25,
         
 
     },
 
+    txtInputView: {
+        //backgroundColor: "white",
+        height: 50,
+        marginBottom: 25,
+        marginTop: 20,
+    
+        },
+    
+    txtInput: {
+           
+        padding: 20,
+        backgroundColor: "white",
+        borderRadius: 50,
+           
+     },
+
     button: {
 
         backgroundColor: "black",
-        
         marginTop: 25,
         padding: 20,
         borderRadius: 12,

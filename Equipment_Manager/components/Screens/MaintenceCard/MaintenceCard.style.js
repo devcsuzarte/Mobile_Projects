@@ -67,14 +67,23 @@ export const s = StyleSheet.create({
     },
 
     txtInputView: {
-    backgroundColor: "white",
-    height: 500,
+   
 
+    },
+
+    title: {
+
+        fontSize: 20, 
+        marginHorizontal: 10,
+        padding: 10,
+    
     },
 
     txtInput: {
        
-       padding: 20,
+       padding: 10,
+       backgroundColor: "white",
+       height: 100,
        
     }
 })

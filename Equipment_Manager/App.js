@@ -5,15 +5,22 @@ import { SearchBar } from './components/SearchBar/SearchBar';
 import { BottomBar } from './components/BottomBar/BottomBar';
 import { EquipCard } from './components/EquipCard/EquipCard';
 import { SelectScreen } from './components/SelectScreen/SelectScreen';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { setupDatabase } from './DataBase/setupDatabase';
 import { NavigationContainer } from '@react-navigation/native';
 
 //const [selectScreen, setSelectScreen] = useState("home");
 
 
 
-
 export default function App() {
+
+  useEffect(() => {
+    setupDatabase();
+  }, []);
+
+
+
   return (
 
     <NavigationContainer>

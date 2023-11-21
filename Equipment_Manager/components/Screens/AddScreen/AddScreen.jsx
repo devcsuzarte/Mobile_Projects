@@ -1,11 +1,10 @@
-import { Button, ScrollView, Text, View , TouchableOpacity, Alert} from "react-native";
+import { ScrollView, Text, View , TouchableOpacity, Alert, TextInput} from "react-native";
 import RNPickerSelect from 'react-native-picker-select';
 import { s } from "./AddScreen.style";
-import { useState } from "react";
-import uuid  from 'react-native-uuid';
-
+import { useState, useEffect } from "react";
 
 export function AddScreen(){
+
 
 const selectEquipment = {
 
@@ -32,8 +31,9 @@ const selectEquipment = {
         { label: 'Em produção', value: 'production' },
         { label: 'Em Manutenção', value: 'maintence' },
         { label: 'Em uso', value: 'use' },
-        { label: 'Em trânsito para reparo', value: 'transit' },
-    ]
+        { label: 'Em trânsito para TI', value: 'transitToHere' },
+        { label: 'Em trânsito para origem', value: 'transitToThere' },
+    ], 
 };
 
 
@@ -42,14 +42,14 @@ const equipInfo = {
     category: 'none',
     type: 'none',
     origin: 'none',
-    status: 'none'    
+    propertyName: 'Digite o nome',
+    status: 'none'
+    
 };
-
 
 
 const onDone = () => {
 
-    equipInfo.id = uuid.v4();    
     console.log(equipInfo);
 };
 
@@ -136,6 +136,15 @@ function getOptions(value){
                 placeholder={{label: 'Selecione um tipo', value: null}}
                 items={selectEquipment.origin}
                 onValueChange={(value) => equipInfo.origin = value}
+                />
+            </View>
+
+            <View style={s.txtInputView}>  
+                <Text style={s.title}>Proprietário: </Text>
+                <TextInput
+                    style={s.txtInput}
+                    placeholder={equipInfo.propertyName}
+                    onChangeText={(newName) => equipInfo.propertyName = newName}
                 />
             </View>
 

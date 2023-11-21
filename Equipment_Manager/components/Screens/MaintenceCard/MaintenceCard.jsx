@@ -33,17 +33,20 @@ export function MaintenceCard(){
                 placeholder={{label: 'Selecione um tipo', value: null}}
                 items={
                     options = [
-                        { label: 'Preventiva', value: 'prev' },
-                        { label: 'Corretiva', value: 'correct' },
-                        { label: 'Avaliativa', value: 'avail' },
+                        { label: 'Manutenção Preventiva', value: 'prev' },
+                        { label: 'Manutenção Corretiva', value: 'correct' },
+                        { label: ' Manutenção Avaliativa', value: 'avail' },
+                        { label: 'Troca de propriedade', value: 'troca' },
+                        { label: 'Descarte', value: 'descarte' },
+                        { label: 'Doação', value: 'doacao' },
                     ]
                 }
                 onValueChange={(value) => maintenceInfo.level = value}
                 />
             </View>
             
-            <View>
-            <Text>Relatório da Manutenção</Text>
+            <View style={s.txtInputView}>
+            <Text style={s.title}>Relatório da Manutenção</Text>
             <TextInput
             style={s.txtInput}
             placeholder="Descreva a manutenção"

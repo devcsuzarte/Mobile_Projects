@@ -5,17 +5,14 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { getBestFuel } from './utils/bestFuel';
 import { useState } from 'react';
 import { FuelInfoBar } from './components/FuelInfoBar';
+import { s } from './App.style';
 
 export default function App() {
 
-
   return (
     <SafeAreaProvider>
-      <SafeAreaView>
-        <View>
-        <Text>
-            Insert the info below
-        </Text> 
+      <SafeAreaView style={s.root}>
+        <View >
          <FuelInfoBar/>
       </View>
 

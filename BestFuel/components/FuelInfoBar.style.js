@@ -4,24 +4,45 @@ export const s = StyleSheet.create({
 
     root: {
 
+        alignItems: "center",
+        
+    },
+
+    displayFuel: {
+
+        fontSize: 30,
+        padding: 30,
+
+    },
+
+    displayInfo: {
         flexDirection: "row",
+            
     },
     
     infoItem: {
-        padding: 5,
+
+        fontSize: 25,
+        fontWeight: "bold",
+        padding: 15,
     },
 
     gas: {
 
         backgroundColor: "orange",
 
-        flexDirection: "row"
+        flexDirection: "row",
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
 
     },
 
     ethanol: {
         backgroundColor: "green",
-        flexDirection: "row"
+        flexDirection: "row",
+
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
     },
 
     btn: {
@@ -33,7 +54,7 @@ export const s = StyleSheet.create({
 
     btnTxt: {
 
-        padding: 15,
+        padding: 5,
 
 
     },

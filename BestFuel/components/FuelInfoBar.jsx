@@ -2,22 +2,45 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 import { s } from "./FuelInfoBar.style";
 import DialogInput from "react-native-dialog-input";
-import { getBestFuel } from "../utils/bestFuel";
+import { getBestFuel, showBestFuel } from "../utils/bestFuel";
 
-export function FuelInfoBar({}){
+export function FuelInfoBar(){
 
-    const [gasPrice, setGasPrice] = useState(3);
-    const [gasAutonomy, setGasAutonomy] = useState(14);
-    const [ethanolPrice, setEthanolPrice] = useState(3);
-    const [ethanolAutonomy, setEthanolAutonomy] = useState(10);
+    const [gasPrice, setGasPrice] = useState(0.0);
+    const [gasAutonomy, setGasAutonomy] = useState(0.0);
+    const [ethanolPrice, setEthanolPrice] = useState(0.0);
+    const [ethanolAutonomy, setEthanolAutonomy] = useState(0.0);
     const [dialogVisible, setIsDialogVisible] = useState(false);
     const [displayInfo, setDisplayInfo] = useState('');
+    const [titleDialog, setTitleDialog] = useState('')
+    const [hintDialog, setHintDialog] = useState('')
+    const [showBestFuel, setShowBestFuel] = useState('Insira as informaçoes');
 
     function onPress(display) {
         
         setIsDialogVisible(true)
         setDisplayInfo(display);
         console.log(displayInfo);
+
+        switch (display){
+
+            case "gasPrice": 
+                setTitleDialog("Insira o preço da Gasolina");
+                setHintDialog("Ex: 5.50");
+                break;
+            case "gasAutonomy": 
+                setTitleDialog("Insira autonomia na Gasolina");
+                setHintDialog("Ex: 12.8");
+                break; 
+            case "ethanolPrice": 
+                setTitleDialog("Insira o preço do Etanol");
+                setHintDialog("Ex: 3.75");
+                break;
+            case "ethanolAutonomy": 
+                setTitleDialog("Insira o consumo no Etanol");
+                setHintDialog("Ex: 10.5");
+                break; 
+        }
         
     
     }
@@ -45,6 +68,7 @@ export function FuelInfoBar({}){
                 setEthanolAutonomy(inputInfo);
                 break; 
         }
+
     }
 
     return(
@@ -53,8 +77,8 @@ export function FuelInfoBar({}){
 
             <DialogInput
                     isDialogVisible={dialogVisible}
-                    title={"Insira o preço da gasolina"}
-                    hintInput ={"Ex: 3.75"}
+                    title={titleDialog}
+                    hintInput ={hintDialog}
                     submitInput={ (textInput) => {
                         setInfoDisplay(textInput, displayInfo), 
                         setIsDialogVisible(false)} }
@@ -62,6 +86,14 @@ export function FuelInfoBar({}){
                 /> 
         
         <View style={s.root}>
+            <View>
+                <Text style={s.displayFuel}>
+                {showBestFuel}
+                </Text>
+            </View>
+
+            <View style={s.displayInfo}>
+
             <View style={s.gas}>
                 <TouchableOpacity
                     onPress={() => {onPress('gasPrice')}}
@@ -97,6 +129,11 @@ export function FuelInfoBar({}){
                 </TouchableOpacity>
                 
             </View>
+
+
+
+            </View>
+            
             
         </View>
 

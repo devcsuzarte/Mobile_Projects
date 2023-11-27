@@ -9,7 +9,6 @@ import { FuelInfoBar } from './components/FuelInfoBar';
 export default function App() {
 
 
-
   return (
     <SafeAreaProvider>
       <SafeAreaView>

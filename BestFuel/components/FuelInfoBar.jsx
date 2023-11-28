@@ -3,6 +3,7 @@ import { useState } from "react";
 import { s } from "./FuelInfoBar.style";
 import DialogInput from "react-native-dialog-input";
 import { getBestFuel, showBestFuel } from "../utils/bestFuel";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export function FuelInfoBar(){
 
@@ -71,6 +72,15 @@ export function FuelInfoBar(){
 
     }
 
+
+ const resetDisplays = () => {
+
+    setGasPrice(0);
+    setGasAutonomy(0);
+    setEthanolPrice(0);
+    setEthanolAutonomy(0);
+ }
+
     return(
         
         <>
@@ -133,17 +143,31 @@ export function FuelInfoBar(){
 
 
             </View>
-            
+
+            <View style={s.buttonsView}>
+                <TouchableOpacity style={s.btn}
+                onPress={sendInfo}
+                >
+                    <Text style={s.btnTxt}>
+                        VERIFY
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={s.btnRestore}
+                onPress={resetDisplays}
+                >
+                    <MaterialCommunityIcons 
+                    name="restore" 
+                    size={48} 
+                    color="white" />
+                </TouchableOpacity>
+
+
+            </View>
             
         </View>
+        
 
-        <TouchableOpacity style={s.btn}
-            onPress={sendInfo}
-        >
-                <Text style={s.btnTxt}>
-                    VERIFY
-                </Text>
-            </TouchableOpacity>
         </>
     )
 }

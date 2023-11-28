@@ -45,17 +45,31 @@ export const s = StyleSheet.create({
         borderBottomRightRadius: 10,
     },
 
-    btn: {
+    buttonsView: {
+        flexDirection: "row",
+    },
 
+    btn: {
+        
+        borderRadius: 10,
         backgroundColor: "blue",
         margin: 20,
-
     },
 
     btnTxt: {
 
-        padding: 5,
+        paddingVertical: 15,
+        paddingHorizontal: 25,
+        fontSize: 25,
+        color: "white",
 
 
     },
+
+    btnRestore: {
+        
+        borderRadius: 10,
+        backgroundColor: "red",
+    },
+
 })

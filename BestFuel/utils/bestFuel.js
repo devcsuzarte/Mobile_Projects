@@ -8,12 +8,12 @@ export function getBestFuel(gasPrice, gasAutonomy, ethanolPrice, ethanolAutonomy
 
     if(costEthanol < costGas){
         console.log("ETHANOL IS BEST");
-        return "=>Etanol";
+        return "ETANOL";
         
          
     } else {
         
         console.log("GASOLINE IS BEST");
-        return "=>Gasolina";
+        return "GASOLINA";
     }
 }

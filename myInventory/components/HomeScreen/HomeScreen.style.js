@@ -1,6 +1,22 @@
 import { StyleSheet } from "react-native"
 
-const s = StyleSheet.create({
+export const s = StyleSheet.create({
 
+    root: {
+        height: "100%",
+        backgroundColor: "green",
+    },
+
+    btn: {
+
+
+        backgroundColor: "black"
+
+    },
+
+    btnTxt: {
+        
+        
+    },
     
 })

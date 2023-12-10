@@ -6,16 +6,25 @@ import { getBestFuel } from './utils/bestFuel';
 import { useState } from 'react';
 import { FuelInfoBar } from './components/FuelInfoBar';
 import { s } from './App.style';
+import { FontAwesome5 } from '@expo/vector-icons'; 
 
 export default function App() {
 
   return (
     <SafeAreaProvider>
+
+      <View style={s.header}>
+          
+          <FontAwesome5 name="gas-pump" size={24} color="black" style/>
+          <Text style={s.headerTxt}>
+             Combustível Certo
+          </Text>
+        </View>
+
       <SafeAreaView style={s.root}>
-        <View >
+        <View>
          <FuelInfoBar/>
       </View>
-
       </SafeAreaView>
     </SafeAreaProvider>
     

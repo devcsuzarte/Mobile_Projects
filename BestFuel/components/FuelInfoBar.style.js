@@ -16,6 +16,7 @@ export const s = StyleSheet.create({
     },
 
     displayInfo: {
+        margin: 12,
         flexDirection: "row",
             
     },
@@ -29,7 +30,7 @@ export const s = StyleSheet.create({
 
     gas: {
 
-        backgroundColor: "orange",
+        backgroundColor: "#FAAA8D",
 
         flexDirection: "row",
         borderTopLeftRadius: 10,
@@ -38,21 +39,44 @@ export const s = StyleSheet.create({
     },
 
     ethanol: {
-        backgroundColor: "green",
+        backgroundColor: "#BEE5BF",
         flexDirection: "row",
 
         borderTopRightRadius: 10,
         borderBottomRightRadius: 10,
     },
 
+    displayCoust: {
+        backgroundColor: "#D8DBE2",
+
+        margin: 12,
+
+        borderRadius: 10,
+        flexDirection: "row",
+            
+    },
+
+    coust: {
+
+        padding: 15,
+
+        fontSize: 15,
+        fontWeight: "bold",
+        
+        maxWidth: 100,
+        
+
+    },
+
     buttonsView: {
         flexDirection: "row",
+        alignItems: "center",
     },
 
     btn: {
         
         borderRadius: 10,
-        backgroundColor: "blue",
+        backgroundColor: "#4A6C6F",
         margin: 20,
     },
 
@@ -69,7 +93,8 @@ export const s = StyleSheet.create({
     btnRestore: {
         
         borderRadius: 10,
-        backgroundColor: "red",
+        padding: 8,
+        backgroundColor: "#663F46",
     },
 
 })

@@ -1,12 +1,13 @@
-let bestFuel;
-
 export function getBestFuel(gasPrice, gasAutonomy, ethanolPrice, ethanolAutonomy){
 
-    const costEthanol = (1 / ethanolAutonomy) * ethanolPrice;
-    const costGas = (1 / gasAutonomy) * gasPrice;
+    const ethanolPKM = (1 / ethanolAutonomy).toFixed(2);
+    const gasPKM = (1 / gasAutonomy).toFixed(2);
+    const costEthanol = ethanolPKM * ethanolPrice;
+    const costGas = gasPKM * gasPrice;
     
 
     if(costEthanol < costGas){
+    
         console.log("ETHANOL IS BEST");
         return "ETANOL";
         

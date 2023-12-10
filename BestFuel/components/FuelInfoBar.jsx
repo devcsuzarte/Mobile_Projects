@@ -7,15 +7,19 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export function FuelInfoBar(){
 
-    const [gasPrice, setGasPrice] = useState(0.0);
-    const [gasAutonomy, setGasAutonomy] = useState(0.0);
-    const [ethanolPrice, setEthanolPrice] = useState(0.0);
-    const [ethanolAutonomy, setEthanolAutonomy] = useState(0.0);
+    const [gasPrice, setGasPrice] = useState(0.00);
+    const [gasAutonomy, setGasAutonomy] = useState(0.00);
+    const [ethanolPrice, setEthanolPrice] = useState(0.00);
+    const [ethanolAutonomy, setEthanolAutonomy] = useState(0.00);
+
+    const [gasCoust, setGasCoust] = useState(0.00);
+    const [ethanolCoust, setEthanolCoust] = useState(0.00);
+    
     const [dialogVisible, setIsDialogVisible] = useState(false);
     const [displayInfo, setDisplayInfo] = useState('');
     const [titleDialog, setTitleDialog] = useState('')
     const [hintDialog, setHintDialog] = useState('')
-    const [showBestFuel, setShowBestFuel] = useState('Insira as informaçoes');
+    const [showBestFuel, setShowBestFuel] = useState('Insira as informações');
 
     function onPress(display) {
         
@@ -32,6 +36,7 @@ export function FuelInfoBar(){
             case "gasAutonomy": 
                 setTitleDialog("Insira autonomia na Gasolina");
                 setHintDialog("Ex: 12.8");
+
                 break; 
             case "ethanolPrice": 
                 setTitleDialog("Insira o preço do Etanol");
@@ -50,6 +55,11 @@ export function FuelInfoBar(){
         setShowBestFuel(getBestFuel(gasPrice, gasAutonomy, ethanolPrice, ethanolAutonomy));
     }
 
+    function setLitroKM(autonomy){
+
+        return (1/autonomy).toFixed(2);  
+    }
+
     function setInfoDisplay(inputInfo, getDisplay){
 
         console.log("aq no set" + displayInfo + " o input info " + inputInfo);
@@ -61,12 +71,14 @@ export function FuelInfoBar(){
                 break;
             case "gasAutonomy": 
                 setGasAutonomy(inputInfo);
+                setGasCoust(setLitroKM(inputInfo));
                 break; 
             case "ethanolPrice": 
                 setEthanolPrice(inputInfo);
                 break;
             case "ethanolAutonomy": 
                 setEthanolAutonomy(inputInfo);
+                setEthanolCoust(setLitroKM(inputInfo));
                 break; 
         }
 
@@ -75,10 +87,10 @@ export function FuelInfoBar(){
 
  const resetDisplays = () => {
 
-    setGasPrice(0);
-    setGasAutonomy(0);
-    setEthanolPrice(0);
-    setEthanolAutonomy(0);
+    setGasPrice(0.00);
+    setGasAutonomy(0.00);
+    setEthanolPrice(0.00);
+    setEthanolAutonomy(0.00);
  }
 
     return(
@@ -144,12 +156,32 @@ export function FuelInfoBar(){
 
             </View>
 
+
+            <View style={s.displayCoust}>
+
+                <Text style={s.coust}>
+                    Custo por KM:
+                </Text>
+
+                <View style={s.gas}>
+                    <Text style={s.infoItem}>
+                            {gasCoust}
+                    </Text>   
+                </View>
+
+                <View style={s.ethanol}>
+                    <Text style={s.infoItem}>
+                            {ethanolCoust}
+                    </Text>   
+                </View>
+            </View>
+
             <View style={s.buttonsView}>
                 <TouchableOpacity style={s.btn}
                 onPress={sendInfo}
                 >
                     <Text style={s.btnTxt}>
-                        VERIFY
+                        VERIFICAR
                     </Text>
                 </TouchableOpacity>
 

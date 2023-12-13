@@ -1,7 +1,7 @@
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { s } from "./AddItem.style";
 import { useState } from "react";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setItem } from "../../firebase";
 
 export function AddItem({ navigation }) {
     
@@ -10,34 +10,12 @@ export function AddItem({ navigation }) {
     const [itemTitle, setItemTitle] = useState('none');
     const [itemAmount, setItemAmount] = useState('none');
 
-    
-    const newItem = {
-        title: itemTitle,
-        amount: itemAmount,
-    }
-
-
-
-    const [itemList, setItemList] = useState([]);
-
-    
-
 
     const onPress = () => {
         
         console.log(itemTitle + " - "  + itemAmount);
 
-        newItem.title = itemTitle;
-        newItem.amount = itemAmount;
-
-        if(itemList == []){
-            setItemList([newItem]);
-        } else {
-            setItemList(...itemList, newItem);
-        }
-       
-
-        console.log(itemList);
+        setItem();
 
         navigation.navigate('Home');
 

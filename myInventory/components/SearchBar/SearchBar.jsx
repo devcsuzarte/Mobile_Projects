@@ -1,19 +1,28 @@
-import { TextInput, View, Image } from "react-native"
+import { TextInput, View, Image, TouchableOpacity } from "react-native"
 import { s } from "./SearchBar.style"
+import { useState } from "react"
+import { FontAwesome } from '@expo/vector-icons'; 
 
 export function SearchBar(){
+
+    
+
+    const [inputToSearch, setInputToSearch] = useState("");
     return (
 
         <View style={s.root}>
             <TextInput 
             style={s.txtInput}
             placeholder="Type here to search"
+            onChangeText={text => setInputToSearch(text)}
             >
             </TextInput>
-            <Image
-                style={s.avatar}
-                source={{uri: "https://i.pravatar.cc/300"}}
-            />
+            
+            <TouchableOpacity
+                
+            >
+            <FontAwesome name="search" size={24} color="black" />
+            </TouchableOpacity>
 
         </View>
     )

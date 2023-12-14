@@ -4,11 +4,17 @@ export const s = StyleSheet.create({
 
     root: {
         marginTop: 35,
-        backgroundColor: "white",  
-        flexDirection: "row",
-        borderRadius: 20,
         padding: 10,
         margin: 15,
+        borderRadius: 20,
+
+        backgroundColor: "white", 
+
+        flexDirection: "row",
+        justifyContent: "center",
+       
+
+
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

@@ -1,7 +1,7 @@
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { s } from "./AddItem.style";
 import { useState } from "react";
-import { setItem } from "../../firebase";
+import { setItem, getItem } from "../../firebase";
 
 export function AddItem({ navigation }) {
     
@@ -15,12 +15,14 @@ export function AddItem({ navigation }) {
         
         console.log(itemTitle + " - "  + itemAmount);
 
-        setItem();
+        setItem(itemAmount, itemTitle, true);
 
         navigation.navigate('Home');
 
 
     }
+
+    const getItemDb = () => getItem("TESTANDO PRO MAX");
 
 
 
@@ -60,6 +62,16 @@ export function AddItem({ navigation }) {
 
                 <Text style={s.btnText}>
                     Register Item
+                </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity 
+
+            onPress={getItemDb}
+            style={s.registerBtn}>
+
+                <Text style={s.btnText}>
+                    Get Item
                 </Text>
             </TouchableOpacity>
 

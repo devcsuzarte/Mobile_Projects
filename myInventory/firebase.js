@@ -4,7 +4,7 @@ import { getAnalytics } from "firebase/analytics";
 import firebase from "firebase/compat/app";
 import "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
-import { addDoc, collection } from "firebase/firestore"; 
+import { doc, query, where, addDoc, getDocs, collection } from "firebase/firestore"; 
 
 
 
@@ -34,18 +34,32 @@ const db = getFirestore(app);
 
 
 
-export async function setItem(){
+export async function setItem(itemAmount, itemName, itemUsage){
 
     try {
         const docRef = await addDoc(collection(db, "items"), {
-          amount: 22,
-          name: "TEST"
+          amount: itemAmount,
+          name: itemName,
+          usage: itemUsage,
         });
       
         console.log("Document written with ID: ", docRef.id);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
+
+}
+
+export async function getItem(searchName){
+
+  const q = query(collection(db, "items"), where("name", "==", searchName));
+
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(doc.id, " => ", doc.data());
+  });
+
 
 }
 

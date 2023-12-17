@@ -41,7 +41,7 @@ export const s = StyleSheet.create({
     },
 
     units: {
-        backgroundColor: "blue",
+        backgroundColor: "gray",
         alignItems: "center",
         alignSelf: "flex-end",
 

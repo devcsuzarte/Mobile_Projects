@@ -50,6 +50,11 @@ export async function setItem(itemAmount, itemName, itemUsage){
 
 }
 
+export const info = {
+  itemName: "",
+  itemAmount: "",
+}
+
 export async function getItem(searchName){
 
   const q = query(collection(db, "items"), where("name", "==", searchName));
@@ -57,11 +62,27 @@ export async function getItem(searchName){
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id, " => ", doc.data());
+    console.log(doc.id);
+    const myItems = doc.data();
+
+
+    console.log("This is the amount: " + myItems.amount);
+    info.itemAmount = myItems.amount;
+    console.log("This is the info.itemAmount: " + info.itemAmount);
+    
   });
 
 
 }
+
+
+export async function setShowData(data){
+
+  if(data == "amount"){
+    return info.itemAmount
+  }
+}
+
 
 
 

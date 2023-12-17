@@ -1,7 +1,7 @@
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { s } from "./AddItem.style";
 import { useState } from "react";
-import { setItem, getItem } from "../../firebase";
+import { setItem, getItem, itemConverter } from "../../firebase";
 
 export function AddItem({ navigation }) {
     

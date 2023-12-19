@@ -1,9 +1,10 @@
 export function getBestFuel(gasPrice, gasAutonomy, ethanolPrice, ethanolAutonomy){
 
-    const ethanolPKM = (1 / ethanolAutonomy).toFixed(2);
-    const gasPKM = (1 / gasAutonomy).toFixed(2);
-    const costEthanol = ethanolPKM * ethanolPrice;
-    const costGas = gasPKM * gasPrice;
+
+    const costEthanol = ethanolPrice / ethanolAutonomy;
+    const costGas = gasPrice / gasAutonomy;
+
+
     
 
     if(costEthanol < costGas){

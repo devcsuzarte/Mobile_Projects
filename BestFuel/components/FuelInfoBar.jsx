@@ -2,18 +2,18 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 import { s } from "./FuelInfoBar.style";
 import DialogInput from "react-native-dialog-input";
-import { getBestFuel, showBestFuel } from "../utils/bestFuel";
+// import { getBestFuel, showBestFuel } from "../utils/bestFuel";
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export function FuelInfoBar(){
 
-    const [gasPrice, setGasPrice] = useState(0.00);
-    const [gasAutonomy, setGasAutonomy] = useState(0.00);
-    const [ethanolPrice, setEthanolPrice] = useState(0.00);
-    const [ethanolAutonomy, setEthanolAutonomy] = useState(0.00);
+    const [gasPrice, setGasPrice] = useState(0.0.toFixed(2));
+    const [gasAutonomy, setGasAutonomy] = useState(0.0.toFixed(2));
+    const [ethanolPrice, setEthanolPrice] = useState(0.0.toFixed(2));
+    const [ethanolAutonomy, setEthanolAutonomy] = useState(0.0.toFixed(2));
 
-    const [gasCoust, setGasCoust] = useState(0.00);
-    const [ethanolCoust, setEthanolCoust] = useState(0.00);
+    const [gasCoust, setGasCoust] = useState(0.0.toFixed(2));
+    const [ethanolCoust, setEthanolCoust] = useState(0.0.toFixed(2));
     
     const [dialogVisible, setIsDialogVisible] = useState(false);
     const [displayInfo, setDisplayInfo] = useState('');
@@ -51,14 +51,35 @@ export function FuelInfoBar(){
     
     }
 
+    function getBestFuel(gasPrice, gasAutonomy, ethanolPrice, ethanolAutonomy){
+
+
+        const costEthanol = ethanolPrice / ethanolAutonomy;
+        const costGas = gasPrice / gasAutonomy;
+    
+        setGasCoust(costGas.toFixed(2));
+        setEthanolCoust(costEthanol.toFixed(2));
+        
+    
+        if(costEthanol < costGas){
+        
+            console.log("ETHANOL IS BEST");
+            return "ETANOL";
+            
+             
+        } else {
+            
+            console.log("GASOLINE IS GOOD");
+            return "GASOLINA";
+        }
+    }
+
+
     function sendInfo(){
         setShowBestFuel(getBestFuel(gasPrice, gasAutonomy, ethanolPrice, ethanolAutonomy));
     }
 
-    function setLitroKM(autonomy){
 
-        return (1/autonomy).toFixed(2);  
-    }
 
     function setInfoDisplay(inputInfo, getDisplay){
 
@@ -67,18 +88,16 @@ export function FuelInfoBar(){
         switch (getDisplay){
 
             case "gasPrice": 
-                setGasPrice(inputInfo);
+                setGasPrice(Number(inputInfo).toFixed(2));
                 break;
             case "gasAutonomy": 
-                setGasAutonomy(inputInfo);
-                setGasCoust(setLitroKM(inputInfo));
+                setGasAutonomy(Number(inputInfo).toFixed(2));
                 break; 
             case "ethanolPrice": 
-                setEthanolPrice(inputInfo);
+                setEthanolPrice(Number(inputInfo).toFixed(2));
                 break;
             case "ethanolAutonomy": 
-                setEthanolAutonomy(inputInfo);
-                setEthanolCoust(setLitroKM(inputInfo));
+                setEthanolAutonomy(Number(inputInfo).toFixed(2));
                 break; 
         }
 
@@ -87,10 +106,10 @@ export function FuelInfoBar(){
 
  const resetDisplays = () => {
 
-    setGasPrice(0.00);
-    setGasAutonomy(0.00);
-    setEthanolPrice(0.00);
-    setEthanolAutonomy(0.00);
+    setGasPrice(0.0.toFixed(2));
+    setGasAutonomy(0.00.toFixed(2));
+    setEthanolPrice(0.00.toFixed(2));
+    setEthanolAutonomy(0.00.toFixed(2));
  }
 
     return(
@@ -118,15 +137,23 @@ export function FuelInfoBar(){
 
             <View style={s.gas}>
                 <TouchableOpacity
+                    style={s.infoDisplay}
                     onPress={() => {onPress('gasPrice')}}
-                >            
+                >       
+                    <Text>
+                        Preço Gasolina    
+                    </Text>     
                     <Text style={s.infoItem}>
                         {gasPrice}
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
+                    style={s.infoDisplay}
                     onPress={() => {onPress('gasAutonomy')}}
                 >
+                    <Text>
+                    Km/L
+                    </Text>
                     <Text style={s.infoItem}>
                         {gasAutonomy}
                     </Text>
@@ -135,16 +162,24 @@ export function FuelInfoBar(){
 
             <View style={s.ethanol}>
                 <TouchableOpacity
+                    style={s.infoDisplay}
                     onPress={() => {onPress('ethanolPrice')}}
                 >
+                    <Text>
+                        Preço Etanol
+                    </Text>
                     <Text style={s.infoItem}>
                     {ethanolPrice}
                 </Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity
+                    style={s.infoDisplay}
                     onPress={() => {onPress('ethanolAutonomy')}}
                 >
+                <Text>
+                    Km/L
+                </Text>
                 <Text style={s.infoItem}>
                     {ethanolAutonomy}
                 </Text>

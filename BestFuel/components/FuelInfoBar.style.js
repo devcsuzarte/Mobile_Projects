@@ -17,7 +17,7 @@ export const s = StyleSheet.create({
 
     displayInfo: {
         margin: 12,
-        flexDirection: "row",
+        //flexDirection: "row",
             
     },
     
@@ -33,17 +33,15 @@ export const s = StyleSheet.create({
         backgroundColor: "#FAAA8D",
 
         flexDirection: "row",
-        borderTopLeftRadius: 10,
-        borderBottomLeftRadius: 10,
+        borderRadius: 10,
 
     },
 
     ethanol: {
         backgroundColor: "#BEE5BF",
         flexDirection: "row",
-
-        borderTopRightRadius: 10,
-        borderBottomRightRadius: 10,
+        
+        borderRadius: 10,
     },
 
     displayCoust: {
@@ -54,6 +52,12 @@ export const s = StyleSheet.create({
         borderRadius: 10,
         flexDirection: "row",
             
+    },
+
+    infoDisplay: {
+
+        padding: 10,
+        justifyContent: "center",
     },
 
     coust: {

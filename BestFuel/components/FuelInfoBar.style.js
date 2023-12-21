@@ -13,6 +13,7 @@ export const s = StyleSheet.create({
     displayFuel: {
 
         fontSize: 30,
+        
         padding: 30,
 
     },
@@ -80,7 +81,6 @@ export const s = StyleSheet.create({
         fontWeight: "bold",
         
         maxWidth: 100,
-        
 
     },
 
@@ -90,7 +90,9 @@ export const s = StyleSheet.create({
 
         flexDirection: "row",
         justifyContent: "center",
-        borderRadius: 10,
+        
+        borderTopLeftRadius: 10,
+        borderBottomLeftRadius: 10,
     },
 
     buttonsView: {

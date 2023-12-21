@@ -4,6 +4,7 @@ import { s } from "./FuelInfoBar.style";
 import DialogInput from "react-native-dialog-input";
 // import { getBestFuel, showBestFuel } from "../utils/bestFuel";
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { Alert } from 'react-native'
 
 export function FuelInfoBar(){
 
@@ -55,6 +56,7 @@ export function FuelInfoBar(){
 
         const costEthanol = ethanolPrice / ethanolAutonomy;
         const costGas = gasPrice / gasAutonomy;
+
     
         setGasCoust(costGas.toFixed(2));
         setEthanolCoust(costEthanol.toFixed(2));
@@ -73,7 +75,21 @@ export function FuelInfoBar(){
 
 
     function sendInfo(){
-        setShowBestFuel(getBestFuel(gasPrice, gasAutonomy, ethanolPrice, ethanolAutonomy));
+
+        if((Number(gasPrice) > Number(0) && Number(gasAutonomy) > Number(0)) 
+            && (Number(ethanolPrice) > Number(0) && Number(ethanolAutonomy) > Number(0)) 
+        ){
+            console.log("INFOS > 0");
+            setShowBestFuel(getBestFuel(gasPrice, gasAutonomy, ethanolPrice, ethanolAutonomy));
+        } else {
+            Alert.alert(" Preencha todos os campos corretamente");
+            resetDisplays();
+
+        }
+
+        
+
+        
     }
 
 
@@ -107,6 +123,7 @@ export function FuelInfoBar(){
     setEthanolAutonomy(0.00.toFixed(2));
     setGasCoust(0.00.toFixed(2));
     setEthanolCoust(0.00.toFixed(2));
+    setShowBestFuel("Insira as informações")
  }
 
     return(
@@ -213,7 +230,7 @@ export function FuelInfoBar(){
                 onPress={sendInfo}
                 >
                     <Text style={s.btnTxt}>
-                        VERIFICAR
+                        Verificar
                     </Text>
                 </TouchableOpacity>
 

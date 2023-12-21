@@ -2,7 +2,6 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 import { s } from "./FuelInfoBar.style";
 import DialogInput from "react-native-dialog-input";
-// import { getBestFuel, showBestFuel } from "../utils/bestFuel";
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { Alert } from 'react-native'
 
@@ -20,7 +19,7 @@ export function FuelInfoBar(){
     const [displayInfo, setDisplayInfo] = useState('');
     const [titleDialog, setTitleDialog] = useState('')
     const [hintDialog, setHintDialog] = useState('')
-    const [showBestFuel, setShowBestFuel] = useState('Insira as informações');
+    const [showBestFuel, setShowBestFuel] = useState('Insira as informações:');
 
     function onPress(display) {
         
@@ -64,12 +63,12 @@ export function FuelInfoBar(){
     
         if(costEthanol < costGas){
         
-            return "ETANOL";
+            return ">> Etanol <<";
             
              
         } else {
             
-            return "GASOLINA";
+            return ">> Gasolina <<";
         }
     }
 
@@ -79,7 +78,7 @@ export function FuelInfoBar(){
         if((Number(gasPrice) > Number(0) && Number(gasAutonomy) > Number(0)) 
             && (Number(ethanolPrice) > Number(0) && Number(ethanolAutonomy) > Number(0)) 
         ){
-            console.log("INFOS > 0");
+            
             setShowBestFuel(getBestFuel(gasPrice, gasAutonomy, ethanolPrice, ethanolAutonomy));
         } else {
             Alert.alert(" Preencha todos os campos corretamente");
@@ -123,7 +122,7 @@ export function FuelInfoBar(){
     setEthanolAutonomy(0.00.toFixed(2));
     setGasCoust(0.00.toFixed(2));
     setEthanolCoust(0.00.toFixed(2));
-    setShowBestFuel("Insira as informações")
+    setShowBestFuel("Insira as informações:")
  }
 
     return(
@@ -218,7 +217,7 @@ export function FuelInfoBar(){
                     </Text>   
                 </View>
 
-                <View style={s.ethanol}>
+                <View style={s.coustEthanol}>
                     <Text style={s.infoItem}>
                             {ethanolCoust}
                     </Text>   

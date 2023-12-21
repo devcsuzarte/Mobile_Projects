@@ -95,6 +95,16 @@ export const s = StyleSheet.create({
         borderBottomLeftRadius: 10,
     },
 
+    coustEthanol: {
+
+        backgroundColor: "#BEE5BF",
+        flexDirection: "row",
+        
+        borderTopRightRadius: 10,
+        borderBottomRightRadius: 10,
+
+    },
+
     buttonsView: {
         flexDirection: "row",
         alignItems: "center",

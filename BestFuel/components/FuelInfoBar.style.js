@@ -1,6 +1,8 @@
 import { StyleSheet } from "react-native";
 
+
 export const s = StyleSheet.create({
+
 
     root: {
 
@@ -33,7 +35,10 @@ export const s = StyleSheet.create({
         backgroundColor: "#FAAA8D",
 
         flexDirection: "row",
+        justifyContent: "center",
         borderRadius: 10,
+
+        marginBottom: 10,
 
     },
 
@@ -42,6 +47,12 @@ export const s = StyleSheet.create({
         flexDirection: "row",
         
         borderRadius: 10,
+    },
+
+    infoLable: {
+
+        fontWeight: "bold",
+        
     },
 
     displayCoust: {
@@ -56,8 +67,9 @@ export const s = StyleSheet.create({
 
     infoDisplay: {
 
-        padding: 10,
+        padding: 5,
         justifyContent: "center",
+        alignItems: "center",
     },
 
     coust: {
@@ -70,6 +82,15 @@ export const s = StyleSheet.create({
         maxWidth: 100,
         
 
+    },
+
+    coustGas: {
+        
+        backgroundColor: "#FAAA8D",
+
+        flexDirection: "row",
+        justifyContent: "center",
+        borderRadius: 10,
     },
 
     buttonsView: {

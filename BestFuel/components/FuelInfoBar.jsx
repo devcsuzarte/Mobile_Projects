@@ -25,7 +25,6 @@ export function FuelInfoBar(){
         
         setIsDialogVisible(true)
         setDisplayInfo(display);
-        console.log(displayInfo);
 
         switch (display){
 
@@ -63,13 +62,11 @@ export function FuelInfoBar(){
     
         if(costEthanol < costGas){
         
-            console.log("ETHANOL IS BEST");
             return "ETANOL";
             
              
         } else {
             
-            console.log("GASOLINE IS GOOD");
             return "GASOLINA";
         }
     }
@@ -82,8 +79,6 @@ export function FuelInfoBar(){
 
 
     function setInfoDisplay(inputInfo, getDisplay){
-
-        console.log("aq no set" + displayInfo + " o input info " + inputInfo);
 
         switch (getDisplay){
 
@@ -110,6 +105,8 @@ export function FuelInfoBar(){
     setGasAutonomy(0.00.toFixed(2));
     setEthanolPrice(0.00.toFixed(2));
     setEthanolAutonomy(0.00.toFixed(2));
+    setGasCoust(0.00.toFixed(2));
+    setEthanolCoust(0.00.toFixed(2));
  }
 
     return(
@@ -140,8 +137,8 @@ export function FuelInfoBar(){
                     style={s.infoDisplay}
                     onPress={() => {onPress('gasPrice')}}
                 >       
-                    <Text>
-                        Preço Gasolina    
+                    <Text style={s.infoLable}>
+                        Preço    
                     </Text>     
                     <Text style={s.infoItem}>
                         {gasPrice}
@@ -151,7 +148,7 @@ export function FuelInfoBar(){
                     style={s.infoDisplay}
                     onPress={() => {onPress('gasAutonomy')}}
                 >
-                    <Text>
+                    <Text style={s.infoLable}>
                     Km/L
                     </Text>
                     <Text style={s.infoItem}>
@@ -165,8 +162,8 @@ export function FuelInfoBar(){
                     style={s.infoDisplay}
                     onPress={() => {onPress('ethanolPrice')}}
                 >
-                    <Text>
-                        Preço Etanol
+                    <Text style={s.infoLable}>
+                        Preço
                     </Text>
                     <Text style={s.infoItem}>
                     {ethanolPrice}
@@ -177,7 +174,7 @@ export function FuelInfoBar(){
                     style={s.infoDisplay}
                     onPress={() => {onPress('ethanolAutonomy')}}
                 >
-                <Text>
+                <Text style={s.infoLable}>
                     Km/L
                 </Text>
                 <Text style={s.infoItem}>
@@ -198,7 +195,7 @@ export function FuelInfoBar(){
                     Custo por KM:
                 </Text>
 
-                <View style={s.gas}>
+                <View style={s.coustGas}>
                     <Text style={s.infoItem}>
                             {gasCoust}
                     </Text>   

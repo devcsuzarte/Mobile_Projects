@@ -59,7 +59,9 @@ export function HomeScreen({ navigation }){
             <TouchableOpacity style={s.btn}
                 onPress={() => navigation.navigate('Add')}
             >
-                
+                <Text>
+                    +
+                </Text>
             </TouchableOpacity>
             
         </View>

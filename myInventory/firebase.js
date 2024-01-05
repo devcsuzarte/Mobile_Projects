@@ -5,6 +5,7 @@ import firebase from "firebase/compat/app";
 import "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { doc, query, where, addDoc, getDocs, collection } from "firebase/firestore"; 
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
 
@@ -62,7 +63,6 @@ export async function getItem(searchName){
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    console.log(doc.id);
     const myItems = doc.data();
 
 
@@ -84,6 +84,42 @@ export async function setShowData(data){
 }
 
 
+const auth = getAuth();
+
+const handleSingUp = (email, password) => {
+
+  console.log(`${email} ----- ${password}`);
+
+  createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+}
+
+const handleSingIn = (email, password) => {
+
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    // ...
+    console.log(`${email} -- login`)
+    return true;
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
+}
+
+export { auth, handleSingUp, handleSingIn };
 
 
       

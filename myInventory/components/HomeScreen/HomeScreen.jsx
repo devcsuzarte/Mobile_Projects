@@ -6,13 +6,23 @@ import { s } from "./HomeScreen.style";
 import { FontAwesome } from '@expo/vector-icons'; 
 import { getItem, info } from "../../firebase";
 import { useState } from "react"
-
+import { auth } from "../../firebase";
 
 
 export function HomeScreen({ navigation }){
 
     const [inputToSearch, setInputToSearch] = useState("");
     const [showAmount, setShowAmount] = useState("-");
+
+    const handleSingOut = () => {
+
+        auth
+            .signOut()
+            .then(() => {
+                navigation.replace('Login')
+            })
+            .catch(error => alert(error.message))
+    }
 
     function sendToItem(send) {
 
@@ -22,7 +32,7 @@ export function HomeScreen({ navigation }){
     function getItemFromDataBase(inputSearch){
 
         getItem(inputSearch);
-        console.log(getItem(inputSearch))
+        //console.log(getItem(inputSearch))
         setShowAmount(info.itemAmount);
 
     }
@@ -64,6 +74,13 @@ export function HomeScreen({ navigation }){
                 </Text>
             </TouchableOpacity>
             
+            <TouchableOpacity style={s.btn}
+                onPress={handleSingOut}
+            >
+                <Text>
+                    Sign Out
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }
